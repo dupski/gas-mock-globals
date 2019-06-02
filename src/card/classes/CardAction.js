@@ -1,5 +1,6 @@
 const set = require('lodash.set')
 const OpenLink = require('./OpenLink')
+const Action = require('./Action')
 const BaseClass = require('../../helpers/BaseClass')
 
 class CardAction extends BaseClass {
@@ -7,15 +8,20 @@ class CardAction extends BaseClass {
     if ((openLink instanceof OpenLink) === false) {
       throw new Error('Invalid value passed for "setOpenLink"')
     }
-
     set(this._data, 'onClick.openLink', openLink.getData())
+    return this
+  }
 
+  setOnClickAction (action) {
+    if ((action instanceof Action) === false) {
+      throw new Error('Invalid value passed for "setOnClickAction"')
+    }
+    set(this._data, 'onClick.action', action.getData())
     return this
   }
 
   setText (text) {
     this._data.actionLabel = text
-
     return this
   }
 }
