@@ -14,13 +14,7 @@ class CardSection extends BaseClass {
       throw new Error('Invalid value passed for "addWidget"')
     }
 
-    if (widget instanceof Button) {
-      const buttonSet = new ButtonSet().addButton(widget)
-
-      this._data.widgets.push(buttonSet.getData())
-    } else {
-      this._data.widgets.push(widget.getData())
-    }
+    this._data.widgets.push(widget.getData())
 
     return this
   }
